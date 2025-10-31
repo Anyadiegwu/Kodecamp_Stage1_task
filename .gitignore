@@ -1,0 +1,7 @@
+# Hide secrets
+.env
+
+# Hide virtual environment
+venv/
+__pycache__/
+*.pyc
