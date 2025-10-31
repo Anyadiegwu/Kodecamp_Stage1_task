@@ -1,4 +1,4 @@
-A small script or function in Python that does the following:
+A Small Script or Function in Python that does the following:
 
 Accepts a user prompt from input (e.g., via command line, web form, or API endpoint).
 Sends this user prompt to an AI text generation API which in this case is Gemini API along with a system prompt that defines the AI’s behaviour.
