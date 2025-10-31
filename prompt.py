@@ -6,8 +6,22 @@ import re
 import streamlit as st
 
 
-load_dotenv()
-GEMINI_API_KEY = os.getenv("GEMINI_API_KEY")
+
+def get_api_key():
+    try:
+        load_dotenv()
+        API_KEY = os.getenv("GEMINI_API_KEY")
+        if API_KEY:
+            return API_KEY
+    except Exception:
+        pass 
+    
+    if "GEMINI_API_KEY" in st.secrets:
+        return st.secrets["GEMINI_API_KEY"]
+
+
+GEMINI_API_KEY = get_api_key()
+
 
 @st.cache_data(ttl=3600)
 def get_banned_words():
@@ -38,6 +52,7 @@ def redact_banned(text: str) -> str:
     #     words = words.replace(word.capitalize(), "[REDACTED]")
     #     words = words.replace(word.upper(), "[REDACTED]")
     # return words    
+
 
 genai.configure(
     api_key = GEMINI_API_KEY
