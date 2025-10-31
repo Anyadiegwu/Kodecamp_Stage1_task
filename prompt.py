@@ -48,6 +48,7 @@ if has_banned_words(user_prompt):
 else:
     response = model.generate_content(user_prompt)
     ai_text = response.text
+    
     if has_banned_words(ai_text):
         safe_text = redact_banned(ai_text)
         print("The Generated response contained inappropriate language. Here is the Modified text.")
